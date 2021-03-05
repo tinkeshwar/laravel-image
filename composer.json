@@ -11,10 +11,15 @@
     "require": {
         "hisorange/browser-detect": "^4.3"
     },
+    "autoload": {
+        "psr-4": {
+          "tinkeshwar\\Imager\\": "src/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
-                "Tinkeshwar\\Imager\\ImageServiceProvider"
+                "tinkeshwar\\Imager\\ImageServiceProvider"
             ]
         }
     }
