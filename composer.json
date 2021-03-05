@@ -1,0 +1,14 @@
+{
+    "name": "tinkeshwar/imager",
+    "description": "later",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tinkeshwar Singh",
+            "email": "tinkeshwar@gmail.com"
+        }
+    ],
+    "require": {
+        "hisorange/browser-detect": "^4.3"
+    }
+}
