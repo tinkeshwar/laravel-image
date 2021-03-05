@@ -13,13 +13,13 @@
     },
     "autoload": {
         "psr-4": {
-          "tinkeshwar\\Imager\\": "src/"
+          "Tinkeshwar\\Imager\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "tinkeshwar\\Imager\\ImageServiceProvider"
+                "Tinkeshwar\\Imager\\ImagerServiceProvider"
             ]
         }
     }
