@@ -10,5 +10,12 @@
     ],
     "require": {
         "hisorange/browser-detect": "^4.3"
-    }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tinkeshwar\\Imager\\ImageServiceProvider"
+            ]
+        }
+    },
 }

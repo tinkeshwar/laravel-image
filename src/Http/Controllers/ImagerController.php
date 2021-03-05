@@ -49,7 +49,6 @@ class ImagerController extends Controller
      */
     protected function getFile($id, $height, $width, $thumb_name = NULL)
     {
-        dd(config('image.image_storage'));
         $image = Image::find($id);
         $file = 'https://dummyimage.com/' . $width . 'x' . $height . '&text=no-image';
         if (isset($image->id) && $image->path && $image->name) {
