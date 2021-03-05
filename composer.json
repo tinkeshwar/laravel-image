@@ -8,7 +8,9 @@
             "email": "tinkeshwar@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "jenssegers/agent": "^2.6"
+    },
     "autoload": {
         "psr-4": {
           "Tinkeshwar\\Imager\\": "src/"
