@@ -25,8 +25,10 @@ class ImagerServiceProvider extends ServiceProvider
     {
         include __DIR__ . '/../routes/routes.php';
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
-        $this->publishes([
-            __DIR__ . '/../config/image.php' => config_path('image.php'),
-        ]);
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../config/image.php' => config_path('image.php'),
+            ]);
+        }
     }
 }
