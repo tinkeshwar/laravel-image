@@ -5,7 +5,7 @@ namespace Tinkeshwar\Imager\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Browser;
+use Jenssegers\Agent\Agent;
 use Tinkeshwar\Imager\Models\Image;
 
 class ImagerController extends Controller
@@ -15,7 +15,8 @@ class ImagerController extends Controller
 
     function __construct()
     {
-        if (Browser::isSafari()) {
+        $agent = new Agent();
+        if ($agent->isSafari()) {
             $this->imageExtension = '.png';
         } else {
             $this->imageExtension = '.webp';

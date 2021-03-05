@@ -8,9 +8,7 @@
             "email": "tinkeshwar@gmail.com"
         }
     ],
-    "require": {
-        "hisorange/browser-detect": "^4.3"
-    },
+    "require": {},
     "autoload": {
         "psr-4": {
           "Tinkeshwar\\Imager\\": "src/"
