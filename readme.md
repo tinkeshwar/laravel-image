@@ -72,7 +72,7 @@ to migrate the image table schema into you database.
     		    $yourmodel->image()->create([
     			    'name'=>Imager::moveFile($request->file('image'),'public'), //second parameter is optional, `public` is default
     			    'path'=>'public/' //sample path used in above function
-    			]);
+    		    ]);
     		}
     	}
     }
