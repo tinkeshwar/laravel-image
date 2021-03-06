@@ -14,7 +14,7 @@ class ClearCache extends Command
     {
         if ($this->shouldClearCache()) {
             $this->info('Clearing cache...');
-            Storage::disk(config('image.image_cache_storage'))->allFiles('image-cache');
+            Storage::disk(config('filesystems.default'))->deleteDirectory('image-cache');
             $this->info('Cache cleared...');
         }
     }
