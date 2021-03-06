@@ -13,7 +13,11 @@ class ImagerServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->bind('imager', function ($app) {
+            return new Imager();
+        });
         $this->app->make('Tinkeshwar\Imager\Http\Controllers\ImagerController');
+        $this->app->make('config')['image'] ?? [];
     }
 
     /**

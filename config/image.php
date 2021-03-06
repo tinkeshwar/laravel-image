@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'image_storage' => env('IMAGE_STORAGE', 'local'),
+    'image_storage' => env('IMAGE_STORAGE', config('filesystems.default')),
 
     /*
     |--------------------------------------------------------------------------
@@ -22,5 +22,16 @@ return [
     |
     */
 
-    'image_cache_storage' => env('IMAGE_CACHE_STORAGE', 'local')
+    'image_cache_storage' => env('IMAGE_CACHE_STORAGE', config('filesystems.default')),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Output File Extension
+    |--------------------------------------------------------------------------
+    |
+    |
+    |
+    */
+
+    'image_extension' => env('IMAGE_EXTENSION', '.webp') //.webp and .png supported
 ];

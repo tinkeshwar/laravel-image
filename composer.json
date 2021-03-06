@@ -2,15 +2,13 @@
     "name": "tinkeshwar/imager",
     "description": "later",
     "license": "MIT",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "Tinkeshwar Singh",
             "email": "tinkeshwar@gmail.com"
         }
     ],
-    "require": {
-        "jenssegers/agent": "^2.6"
-    },
     "autoload": {
         "psr-4": {
           "Tinkeshwar\\Imager\\": "src/"
@@ -20,7 +18,11 @@
         "laravel": {
             "providers": [
                 "Tinkeshwar\\Imager\\ImagerServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "Imager": "Tinkeshwar\\Imager\\Facades\\Imager"
+            }
         }
-    }
+    },
+    "require": {}
 }
