@@ -63,18 +63,18 @@ to migrate the image table schema into you database.
     class  <YOUR CONTROLLER>  extends  Controller {
 
         public function store (Request $request){
-    	    $data = $request->validate([
-    		    'name'=>'required',
-    		    'image'=>'image|nullable'
-    	    ]);
+            $data = $request->validate([
+                'name'=>'required',
+                'image'=>'image|nullable'
+            ]);
             $yourmodel = <YOUR MODEL>::create($data);
             if($request->hasFile('image')){
                 $yourmodel->image()->create([
                     'name'=>Imager::moveFile($request->file('image'),'public'), //second parameter is optional, `public` is default
                     'path'=>'public/' //sample path used in above function
                 ]);
-    		}
-    	}
+            }
+        }
     }
 
 ##### Your view
