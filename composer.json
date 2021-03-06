@@ -1,8 +1,8 @@
 {
     "name": "tinkeshwar/imager",
-    "description": "later",
+    "description": "This is laravel pacakge to create thumbs of any desired size on the fly from existing image.",
     "license": "MIT",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "authors": [
         {
             "name": "Tinkeshwar Singh",

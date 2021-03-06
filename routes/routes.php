@@ -3,4 +3,4 @@
 use Illuminate\Support\Facades\Route;
 use Tinkeshwar\Imager\Http\Controllers\ImagerController;
 
-Route::get('thumb/{id}/{height}/{width}',[ImagerController::class, 'index']);
+Route::get('thumb/{id}/{height}/{width}', [ImagerController::class, 'index'])->name('image');

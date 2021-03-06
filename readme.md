@@ -1,4 +1,4 @@
-### NOTE: This package is still in development, you are very welcome to contribute
+### NOTE: This package is still in development, you are most welcome to contribute
 
 # Documentation
 
