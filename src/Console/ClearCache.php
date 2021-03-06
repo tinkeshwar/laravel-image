@@ -13,8 +13,9 @@ class ClearCache extends Command
     public function handle()
     {
         if ($this->shouldClearCache()) {
-            $this->info('Publishing configuration...');
+            $this->info('Clearing cache...');
             Storage::disk(config('image.image_cache_storage'))->allFiles('image-cache');
+            $this->info('Cache cleared...');
         }
     }
 
