@@ -17,7 +17,7 @@ class Imager
 
     public static function listCache()
     {
-        return Storage::disk(config('image.image_cache_storage'))->allFiles('image-cache');
+        return Storage::disk(config('image.image_cache_storage'))->deleteDirectory('image-cache');
     }
 
     public static function clearCache()
