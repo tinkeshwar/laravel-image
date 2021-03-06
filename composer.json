@@ -28,7 +28,7 @@
     },
     "require": {
         "php": ">=7.0.0",
-        "ext-gd": "*",
+        "ext-gd": "*"
     },
     "suggest": {
         "ext-gd": "to use GD library based image processing."
