@@ -3,10 +3,12 @@
     "description": "This is a laravel package to create thumbs of any desired size on the fly from an existing image.",
     "license": "MIT",
     "version": "1.0.0-beta",
+    "keywords": ["image", "gd", "laravel", "laravel-image", "image-thumb"],
     "authors": [
         {
             "name": "Tinkeshwar Singh",
-            "email": "tinkeshwar@gmail.com"
+            "email": "tinkeshwar@gmail.com",
+            "homepage": "https://tinkeshwar.com/"
         }
     ],
     "autoload": {
@@ -24,5 +26,11 @@
             }
         }
     },
-    "require": {}
+    "require": {
+        "php": ">=7.0.0",
+        "ext-gd": "*",
+    },
+    "suggest": {
+        "ext-gd": "to use GD library based image processing."
+    }
 }
