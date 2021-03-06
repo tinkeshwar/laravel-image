@@ -3,6 +3,7 @@
 namespace Tinkeshwar\Imager;
 
 use Illuminate\Support\ServiceProvider;
+use Tinkeshwar\Imager\Console\InstallImagerPackage;
 
 class ImagerServiceProvider extends ServiceProvider
 {
@@ -32,6 +33,9 @@ class ImagerServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/image.php' => config_path('image.php'),
+            ]);
+            $this->commands([
+                InstallImagerPackage::class,
             ]);
         }
     }

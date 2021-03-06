@@ -14,4 +14,14 @@ class Imager
         $response = Storage::disk(config('image.image_storage'))->put($folder, $file);
         return substr($response, strlen($folder) + 1);
     }
+
+    public static function listCache()
+    {
+        return Storage::disk(config('image.image_cache_storage'))->allFiles('image-cache');
+    }
+
+    public static function clearCache()
+    {
+        return Storage::disk(config('image.image_cache_storage'))->deleteDirectory('image-cache');
+    }
 }

@@ -1,4 +1,4 @@
-### NOTE: This package is still in development, you are most welcome to contribute
+### NOTE: This package is still in development, you are very welcome to contribute
 
 # Documentation
 
@@ -10,16 +10,21 @@ Use below command to install package to your existing laravel project.
 
 After successfull installation publish the config file with following command:
 
-    php artisan vendor:publish
+> **_Install Automatically_**
+>
+>     php artisan imager:install
 
-and select **`Tinkeshwar\Imager\ImagerServiceProvider`**
-this will copy image.php into your app/config.
-
-Run
-
-    php artisan migrate
-
-to migrate the image table schema into you database.
+> **_Install Manually_**
+> php artisan vendor:publish
+>
+> and select **`Tinkeshwar\Imager\ImagerServiceProvider`** this will
+> copy image.php into your app/config.
+>
+> Run
+>
+>     php artisan migrate
+>
+> to migrate the image table schema into you database.
 
 ## Usage
 
@@ -95,3 +100,16 @@ Once the file is uploaded into the system, it can be access as
 > example
 
     `http://localhost:8000/thumb/1/100/100`
+
+If image in cache exist for following `image_id` and aspected ratio it will display existing image or if not exist it will generate a image with required aspect in storage defined in the `config/image.php`
+
+### NOTE:
+
+If image is re-uploaded it has a cache image of previous image you need delete the cache image.
+
+There are following two options to clear cache:
+
+1.  By artisan command
+    `php artisan imager:clear`
+2.  By calling following facade method
+    `Imager::listCache()`
