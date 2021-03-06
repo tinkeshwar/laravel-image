@@ -14,7 +14,6 @@ class ImagerController extends Controller
 
     function __construct()
     {
-        dd(config('image'));
         $this->imageExtension = config('image.image_extension') ?? '.png';
     }
 
