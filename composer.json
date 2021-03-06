@@ -2,7 +2,7 @@
     "name": "tinkeshwar/imager",
     "description": "This is a laravel package to create thumbs of any desired size on the fly from an existing image.",
     "license": "MIT",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "keywords": ["image", "gd", "laravel", "laravel-image", "image-thumb"],
     "authors": [
         {
