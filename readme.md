@@ -12,18 +12,18 @@ After successfull installation publish the config file using one of the followin
 
 > **_Install Automatically_**
 >
-> php artisan imager:install
+> `php artisan imager:install`
 
 > **_Install Manually_**
 >
-> php artisan vendor:publish
+> `php artisan vendor:publish`
 >
 > and select **`Tinkeshwar\Imager\ImagerServiceProvider`** this will
 > copy image.php into your app/config.
 >
 > Run
 >
-> php artisan migrate
+> `php artisan migrate`
 >
 > To migrate the image table schema into you database.
 
