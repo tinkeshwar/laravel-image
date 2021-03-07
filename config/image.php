@@ -33,5 +33,17 @@ return [
     |
     */
 
-    'image_extension' => env('IMAGE_EXTENSION', '.webp') //.webp and .png supported
+    'image_extension' => env('IMAGE_EXTENSION', '.webp'), // .webp || .png || .jpg supported
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Browser Cache Time
+    |--------------------------------------------------------------------------
+    |
+    |
+    |
+    */
+
+    'max_age' => 8, //in days
+    'cache_last_modified' => 1 //in days
 ];

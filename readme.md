@@ -1,14 +1,14 @@
-### NOTE: This package is still in development, you are very welcome to contribute
+### NOTE: This package is still under development, you are most welcome to contribute
 
 # Documentation
 
 ## Installation
 
-Use below command to install package to your existing laravel project.
+Use the command below to install this package to your existing laravel project.
 
     composer require tinkeshwar/imager
 
-After successfull installation publish the config file with following command:
+After successfull installation publish the config file using one of the following commands:
 
 > **_Install Automatically_**
 >
@@ -68,18 +68,18 @@ After successfull installation publish the config file with following command:
     class  <YOUR CONTROLLER>  extends  Controller {
 
         public function store (Request $request){
-            $data = $request->validate([
-                'name'=>'required',
-                'image'=>'image|nullable'
-            ]);
-            $yourmodel = <YOUR MODEL>::create($data);
-            if($request->hasFile('image')){
-                $yourmodel->image()->create([
-                    'name'=>Imager::moveFile($request->file('image'),'public'), //second parameter is optional, `public` is default
-                    'path'=>'public/' //sample path used in above function
-                ]);
-            }
-        }
+    	    $data = $request->validate([
+    		    'name'=>'required',
+    		    'image'=>'image|nullable'
+    	    ]);
+    	    $yourmodel = <YOUR MODEL>::create($data);
+    	    if($request->hasFile('image')){
+    		    $yourmodel->image()->create([
+    			    'name'=>Imager::moveFile($request->file('image'),'public'), //second parameter is optional, `public` is default
+    			    'path'=>'public/' //sample path used in above function
+    			]);
+    		}
+    	}
     }
 
 ##### Your view
@@ -93,21 +93,36 @@ After successfull installation publish the config file with following command:
         <button  type="submit"  class="btn btn-primary">Submit</button>
     </form>
 
-Once the file is uploaded into the system, it can be access as
+##### Static image usage on blade
+
+    {{thumb($source, $height, $width, $extension)}}
+
+| Parameter  | Usage                                                     |
+| ---------- | --------------------------------------------------------- |
+| $source    | path/to/image/in/public/folder                            |
+| $height    | number                                                    |
+| $width     | number                                                    |
+| $extension | optional :: `default: .webp` `allowed: .webp, .png, .jpg` |
+
+> example
+> `<img src={{thumb('/image/bg.png', 100, 100)}}/>`
+
+##### Dynamic image usage on blade
+
+Once the file has been uploaded into the system, it can be access with
 
     <Your Host>/thumb/{image_id}/{height}/{width}
 
 > example
+> `http://localhost:8000/thumb/1/100/100`
 
-    `http://localhost:8000/thumb/1/100/100`
-
-If image in cache exist for following `image_id` and aspected ratio it will display existing image or if not exist it will generate a image with required aspect in storage defined in the `config/image.php`
+If an image exists in cache for provided `image_id` and aspect ratio it will display existing image. If not, it will generate an image with the required aspect ratio at the storage defined in `config/image.php`
 
 ### NOTE:
 
-If image is re-uploaded it has a cache image of previous image you need delete the cache image.
+If an image is re-uploaded and previous copy of image still exists in cache, then the new image wouldn't be cached, you would need to clear cache of previous image for the new one to take it's place.
 
-There are following two options to clear cache:
+There are two options to clear the cache:
 
 1.  By artisan command
     `php artisan imager:clear`

@@ -30,6 +30,7 @@ class ImagerServiceProvider extends ServiceProvider
     public function boot()
     {
         include __DIR__ . '/../routes/routes.php';
+        include __DIR__ . '/../helper/imager.php';
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         if ($this->app->runningInConsole()) {
             $this->publishes([
