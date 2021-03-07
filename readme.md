@@ -12,9 +12,10 @@ After successfull installation publish the config file using one of the followin
 
 > **_Install Automatically_**
 >
->     php artisan imager:install
+> php artisan imager:install
 
 > **_Install Manually_**
+>
 > php artisan vendor:publish
 >
 > and select **`Tinkeshwar\Imager\ImagerServiceProvider`** this will
@@ -22,9 +23,9 @@ After successfull installation publish the config file using one of the followin
 >
 > Run
 >
->     php artisan migrate
+> php artisan migrate
 >
-> to migrate the image table schema into you database.
+> To migrate the image table schema into you database.
 
 ## Usage
 
@@ -105,6 +106,7 @@ After successfull installation publish the config file using one of the followin
 | $extension | optional :: `default: .webp` `allowed: .webp, .png, .jpg` |
 
 > example
+>
 > `<img src={{thumb('/image/bg.png', 100, 100)}}/>`
 
 ##### Dynamic image usage on blade
@@ -114,6 +116,7 @@ Once the file has been uploaded into the system, it can be access with
     <Your Host>/thumb/{image_id}/{height}/{width}
 
 > example
+>
 > `http://localhost:8000/thumb/1/100/100`
 
 If an image exists in cache for provided `image_id` and aspect ratio it will display existing image. If not, it will generate an image with the required aspect ratio at the storage defined in `config/image.php`
