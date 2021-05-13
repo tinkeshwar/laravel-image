@@ -81,6 +81,11 @@ After successfull installation publish the config file using one of the followin
     			]);
     		}
     	}
+
+
+        public function destroy ($imageId){
+            Imager::deleteFile($imageId);
+        }
     }
 
 ##### Your view
