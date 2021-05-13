@@ -7,6 +7,7 @@ if (!function_exists('thumb')) {
     function thumb($source, $height, $width, $extension = '.webp')
     {
         if (file_exists(public_path($source))) {
+            Storage::disk(config('image.image_storage'))->makeDirectory('image-cache/');
             $info = pathinfo($source);
             $imager = new ThumbMaker();
             $newPath = Storage::disk(config('image.image_storage'))->path('image-cache/');
@@ -19,10 +20,9 @@ if (!function_exists('thumb')) {
             header("Cache-Control: max-age=" . config('image.max_age') * 86400 . ", public");
             header('Expires: Mon, ' . date('d M Y', strtotime("+ " . config('image.max_age') . "days")) . ' 05:00:00 GMT');
             header('Last-Modified: Mon, ' . date('d M Y', strtotime("- " . config('image.cache_last_modified') . "days")) . ' 05:00:00 GMT');
-            ob_clean();
-            ob_end_flush();
-            readfile($file);
-            exit();
+            $type = pathinfo($file, PATHINFO_EXTENSION);
+            $data = file_get_contents($file);
+            return 'data:image/' . $type . ';base64,' . base64_encode($data);
         }
     }
 }
