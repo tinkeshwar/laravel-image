@@ -38,4 +38,21 @@ class Imager
         }
         return false;
     }
+
+    public static function changePosition($id, $position)
+    {
+        $image = Image::find($id);
+        if($image){
+            $imageList = Image::where('id','!=',$id)->where('imageable_type',$image->imageable_type)->where('imageable_id',$image->imageable_id)->orderBy('sort_order','ASC')->get();
+            foreach($imageList as $imageToChange){
+                if($imageToChange->sort_order < $position){
+                    continue;
+                }
+                Image::where('id',$imageToChange->id)->increment('sort_order', 1);
+            }
+            $image->update(['sort_order'=>$position]);
+            return true;
+        }
+        return false;
+    }
 }

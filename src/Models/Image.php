@@ -15,7 +15,9 @@ class Image extends Model{
      */
     protected $fillable = [
         'name',
-        'path'
+        'path',
+        'image_type',
+        'sort_order'
     ];
 
     /**

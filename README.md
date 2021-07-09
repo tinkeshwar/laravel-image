@@ -1,5 +1,3 @@
-### NOTE: This package is still under development, you are most welcome to contribute
-
 # Documentation
 
 ## Installation
