@@ -26,6 +26,8 @@ class CreateImagesTable extends Migration
      */
     public function down()
     {
-        $table->dropColumn(['image_category','sort_order']);
+        Schema::table('images', function (Blueprint $table) {
+            $table->dropColumn(['image_category','sort_order']);
+        });
     }
 }
