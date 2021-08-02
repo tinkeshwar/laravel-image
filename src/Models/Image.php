@@ -17,7 +17,9 @@ class Image extends Model{
         'name',
         'path',
         'image_type',
-        'sort_order'
+        'sort_order',
+        'alt',
+        'image_source'
     ];
 
     /**
