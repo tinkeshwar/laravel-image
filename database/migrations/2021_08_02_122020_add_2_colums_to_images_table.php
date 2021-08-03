@@ -15,7 +15,7 @@ class AddAltToImagesTable extends Migration
     {
         Schema::table('images', function (Blueprint $table) {
             $table->string('alt')->nullable()->after('sort_order');
-            $table->string('image_source')->after('alt')->default(1);
+            $table->string('image_source')->nullable()->after('alt');
         });
     }
 
