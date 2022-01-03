@@ -44,24 +44,27 @@ class ImagerController extends Controller
         $image = Image::find($id);
         $file = 'https://dummyimage.com/' . $width . 'x' . $height . '&text=no-image';
         if (isset($image->id) && $image->path && $image->name) {
-            if (Storage::disk(config('image.image_storage'))->exists($image->path . $image->name)) {
+            if (Storage::disk($image->driver)->exists($image->path . $image->name)) {
                 $name = '';
                 $name = Str::snake($thumb_name ? $thumb_name : $id) . '-' . $height . 'x' . $width . $this->imageExtension;
                 $image_path = $image->path . $image->name;
                 if (!Storage::disk(config('image.image_cache_storage'))->exists($name)) {
-                    $name = $this->newThumb($image_path, $height, $width, $name);
+                    $name = $this->newThumb($image_path, $height, $width, $name, $image->driver);
                 }
                 $file = Storage::disk(config('image.image_storage'))->path('image-cache/' . $name);
+                if (config('image.image_storage') === 's3') {
+                    $file = Storage::disk(config('image.image_storage'))->url('image-cache/' . $name);
+                }
             }
         }
         return $file;
     }
 
-    private function newThumb($filename, $height, $width, $newName)
+    private function newThumb($filename, $height, $width, $newName, $driver)
     {
         $imager = new ThumbMaker();
         Storage::disk(config('image.image_storage'))->makeDirectory('image-cache/');
-        $originalFilePath = Storage::disk(config('image.image_storage'))->path($filename);
+        $originalFilePath = Storage::disk($driver)->url($filename);
         $newPath = Storage::disk(config('image.image_storage'))->path('image-cache/');
         return $imager->createThumb($originalFilePath, $newPath, $height, $width, $newName, $this->imageExtension);
     }

@@ -2,6 +2,8 @@
 
 namespace Tinkeshwar\Imager;
 
+use Illuminate\Support\Facades\Storage;
+
 class ThumbMaker
 {
     public function createThumb($originalFilePath, $newPath, $height, $width, $newName, $imageExtension)
@@ -38,26 +40,30 @@ class ThumbMaker
             }
             imagecopyresampled($new_image, $original_image, $dx, $dy, $sx, $sy, $width, $height, $original_image_width, $original_image_height);
         }
-        $this->outputThumb($new_image, $newPath . $newName, $imageExtension);
+        $this->outputThumb($new_image, $newName, $imageExtension);
         return $newName;
     }
 
-    private function outputThumb($newImage, $newPath, $newExtension)
+    private function outputThumb($newImage, $newName, $newExtension)
     {
+        Storage::disk('public')->makeDirectory('temp-cache/');
+        $temp = Storage::disk('public')->path('temp-cache/');
         switch ($newExtension) {
             case '.webp' && function_exists('imagewebp'):
-                imagewebp($newImage, $newPath);
+                imagewebp($newImage, $temp . $newName);
                 break;
             case '.png' && function_exists('imagepng'):
-                imagewebp($newImage, $newPath);
+                imagewebp($newImage, $temp . $newName);
                 break;
             case '.jpg' && function_exists('imagejpeg'):
-                imagejpeg($newImage, $newPath);
+                imagejpeg($newImage, $temp . $newName);
                 break;
             default:
                 break;
         }
+        Storage::disk(config('image.image_cache_storage'))->put('image-cache/' . $newName, Storage::disk('public')->get('temp-cache/' . $newName), 'public');
         imagedestroy($newImage);
+        Storage::disk('public')->delete('temp-cache/' . $newName);
         return true;
     }
 

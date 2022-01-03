@@ -75,7 +75,8 @@ After successfull installation publish the config file using one of the followin
     	    if($request->hasFile('image')){
     		    $yourmodel->image()->create([
     			    'name'=>Imager::moveFile($request->file('image'),'public'), //second parameter is optional, `public` is default
-    			    'path'=>'public/' //sample path used in above function
+    			    'path'=>'public/', //sample path used in above function
+                    'driver' => config('image.image_storage')
     			]);
     		}
     	}
