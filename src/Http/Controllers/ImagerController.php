@@ -64,7 +64,11 @@ class ImagerController extends Controller
     {
         $imager = new ThumbMaker();
         Storage::disk(config('image.image_storage'))->makeDirectory('image-cache/');
-        $originalFilePath = Storage::disk($driver)->url($filename);
+        if ($driver === 's3'){
+            $originalFilePath = Storage::disk($driver)->url($filename);
+        } else {
+            $originalFilePath = Storage::disk($driver)->path($filename);
+        }
         $newPath = Storage::disk(config('image.image_storage'))->path('image-cache/');
         return $imager->createThumb($originalFilePath, $newPath, $height, $width, $newName, $this->imageExtension);
     }
