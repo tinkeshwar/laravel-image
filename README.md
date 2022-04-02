@@ -25,7 +25,7 @@ After successfull installation publish the config file using one of the followin
 >
 > To migrate the image table schema into you database.
 
-Use below cammand to create storage folder 
+Run below command to create symbolic link
 
     php artisan storage:link
 
