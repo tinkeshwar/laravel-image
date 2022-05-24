@@ -39,6 +39,17 @@ class Imager
         return false;
     }
 
+    public static function removeFile($id)
+    {
+        $image = Image::find($id);
+        if ($image) {
+            Image::destroy($id);
+            Self::clearCache();
+            return true;
+        }
+        return false;
+    }
+
     public static function changePosition($id, $position)
     {
         $image = Image::find($id);

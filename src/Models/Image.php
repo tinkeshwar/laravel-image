@@ -16,6 +16,7 @@ class Image extends Model
      */
     protected $fillable = [
         'driver',
+        'ratio',
         'name',
         'path',
         'image_type',

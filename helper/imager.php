@@ -49,7 +49,7 @@ if (!function_exists('thumbCDN')) {
             $type = pathinfo($file, PATHINFO_EXTENSION);
             $data = file_get_contents($file);
             return 'data:image/' . $type . ';base64,' . base64_encode($data);
-        }else{
+        } else {
             return 'https://dummyimage.com/' . $width . 'x' . $height . '&text=no-image';
         }
     }
