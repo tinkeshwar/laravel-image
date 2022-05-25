@@ -17,6 +17,22 @@ class Imager
         return substr($response, strlen($folder) + 1);
     }
 
+    public static function moveWithFileRatio($file, $folder = 'public')
+    {
+        if (!$file->isValid()) {
+            return '';
+        }
+        list($width, $height, $type, $attr) = getimagesize($file);
+        $divisor = gmp_intval( gmp_gcd( $width, $height ) );
+        $aspectRatio = $width / $divisor . ':' . $height / $divisor;
+        $response = Storage::disk(config('image.image_storage'))->put($folder, $file, 'public');
+        Self::clearCache();
+        return [
+            'name' => substr($response, strlen($folder) + 1),
+            'ratio' => $aspectRatio
+        ];
+    }
+
     public static function listCache()
     {
         return Storage::disk(config('image.image_cache_storage'))->allFiles('image-cache');
