@@ -23,8 +23,7 @@ class Imager
             return '';
         }
         list($width, $height, $type, $attr) = getimagesize($file);
-        $divisor = gmp_intval( gmp_gcd( $width, $height ) );
-        $aspectRatio = $width / $divisor . ':' . $height / $divisor;
+        $aspectRatio = $width . ':' . $height;
         $response = Storage::disk(config('image.image_storage'))->put($folder, $file, 'public');
         Self::clearCache();
         return [
